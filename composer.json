@@ -1,0 +1,18 @@
+{
+    "name": "manchenkov/timer",
+    "description": "'Timer' is a class to help build time interval value in seconds by object-oriented style",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Artem Manchenkov",
+            "email": "artyom@manchenkoff.me"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Manchenkov\\Timer\\": "src/"
+        }
+    }
+}
