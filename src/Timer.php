@@ -139,6 +139,23 @@ class Timer
         return "{$hours}:{$minutes}:{$seconds}";
     }
 
+    /**
+     * Parses string with a format "HH:MM:SS" into a Timer object
+     *
+     * @param string $value
+     * @param string $separator
+     *
+     * @return Timer
+     */
+    public static function parseString(string $value, string $separator = ":")
+    {
+        list($hours, $minutes, $seconds) = array_map(function ($str) {
+            return (int)$str;
+        }, explode($separator, $value));
+
+        return self::get()->hours($hours)->minutes($minutes)->seconds($seconds);
+    }
+
     public function __toString()
     {
         return $this->asString();
