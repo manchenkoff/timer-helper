@@ -156,6 +156,24 @@ class Timer
         return self::get()->hours($hours)->minutes($minutes)->seconds($seconds);
     }
 
+    /**
+     * Returns bounds of a passed date
+     * Example: dayBounds('19.02.19 16:55:00') returns ['19.02.19 00:00:00', '19.02.19 23:59:59'] (as unix timestamp)
+     *
+     * @param string $date
+     *
+     * @return array
+     */
+    public static function dayBounds(string $date)
+    {
+        $timestamp = strtotime($date);
+
+        $dayStart = strtotime(date('d.m.Y', $timestamp));
+        $dayEnd = strtotime("+23 hours 59 minutes 59 seconds", $dayStart);
+
+        return [$dayStart, $dayEnd];
+    }
+
     public function __toString()
     {
         return $this->asString();
