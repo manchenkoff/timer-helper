@@ -5,24 +5,26 @@
  * manchenkoff.me © 2019
  */
 
+declare(strict_types=1);
+
 namespace Manchenkov\Timer;
 
 /**
  * This class helps build a time interval value in seconds by object-oriented style
  * @package Manchenkov\Timer
  */
-class Timer
+final class Timer
 {
     /**
      * @var int Seconds value
      */
-    private $value = 0;
+    private int $value = 0;
 
     /**
      * Returns instance of this class
      * @return Timer
      */
-    public static function get()
+    public static function get(): Timer
     {
         return new self();
     }
@@ -34,7 +36,7 @@ class Timer
      *
      * @return $this
      */
-    public function seconds(int $value)
+    public function seconds(int $value): Timer
     {
         $this->value += $value;
 
@@ -48,7 +50,7 @@ class Timer
      *
      * @return Timer
      */
-    public function minutes(int $value)
+    public function minutes(int $value): Timer
     {
         return $this->seconds($value * 60);
     }
@@ -60,7 +62,7 @@ class Timer
      *
      * @return Timer
      */
-    public function hours(int $value)
+    public function hours(int $value): Timer
     {
         return $this->minutes($value * 60);
     }
@@ -72,7 +74,7 @@ class Timer
      *
      * @return Timer
      */
-    public function days(int $value)
+    public function days(int $value): Timer
     {
         return $this->hours($value * 24);
     }
@@ -84,7 +86,7 @@ class Timer
      *
      * @return Timer
      */
-    public function weeks(int $value)
+    public function weeks(int $value): Timer
     {
         return $this->days($value * 7);
     }
@@ -96,7 +98,7 @@ class Timer
      *
      * @return Timer
      */
-    public function months(int $value)
+    public function months(int $value): Timer
     {
         return $this->weeks($value * 4);
     }
@@ -108,7 +110,7 @@ class Timer
      *
      * @return Timer
      */
-    public function years(int $value)
+    public function years(int $value): Timer
     {
         return $this->months($value * 12);
     }
@@ -117,7 +119,7 @@ class Timer
      * Returns an interval value in seconds
      * @return int
      */
-    public function asNumber()
+    public function asNumber(): int
     {
         return $this->value;
     }
@@ -126,7 +128,7 @@ class Timer
      * Returns interval value as a string in format HH:MM:SS
      * @return string
      */
-    public function asString()
+    public function asString(): string
     {
         $hours = floor($this->value / 3600);
         $minutes = floor($this->value / 60) - ($hours * 60);
@@ -147,11 +149,14 @@ class Timer
      *
      * @return Timer
      */
-    public static function parseString(string $value, string $separator = ":")
+    public static function parseString(string $value, string $separator = ":"): Timer
     {
-        list($hours, $minutes, $seconds) = array_map(function ($str) {
-            return (int)$str;
-        }, explode($separator, $value));
+        [$hours, $minutes, $seconds] = array_map(
+            static function ($str): int {
+                return (int) $str;
+            },
+            explode($separator, $value)
+        );
 
         return self::get()->hours($hours)->minutes($minutes)->seconds($seconds);
     }
@@ -164,7 +169,7 @@ class Timer
      *
      * @return array
      */
-    public static function dayBounds(string $date)
+    public static function dayBounds(string $date): array
     {
         $timestamp = strtotime($date);
 
@@ -174,7 +179,7 @@ class Timer
         return [$dayStart, $dayEnd];
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return $this->asString();
     }

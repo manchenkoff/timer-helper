@@ -29,3 +29,11 @@ $intervalString = $timer->asString(); // <string> -> 05:10:34
 // or
 $intervalString = (string)$timer; // <string> -> 05:10:34
 ```
+
+## Testing
+
+To run test cases you should execute the following command
+
+```bash
+./vendor/bin/phpunit tests --testdox
+```
