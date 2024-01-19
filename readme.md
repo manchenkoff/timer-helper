@@ -1,9 +1,9 @@
 # Timer
 
-[![Latest Stable Version](http://poser.pugx.org/manchenkov/timer-helper/v)](https://packagist.org/packages/manchenkov/timer-helper)
-[![Total Downloads](http://poser.pugx.org/manchenkov/timer-helper/downloads)](https://packagist.org/packages/manchenkov/timer-helper)
-[![License](http://poser.pugx.org/manchenkov/timer-helper/license)](https://packagist.org/packages/manchenkov/timer-helper)
-[![PHP Version Require](http://poser.pugx.org/manchenkov/timer-helper/require/php)](https://packagist.org/packages/manchenkov/timer-helper)
+[![Latest Stable Version](http://poser.pugx.org/manchenkov/timer/v)](https://packagist.org/packages/manchenkov/timer)
+[![Total Downloads](http://poser.pugx.org/manchenkov/timer/downloads)](https://packagist.org/packages/manchenkov/timer)
+[![License](http://poser.pugx.org/manchenkov/timer/license)](https://packagist.org/packages/manchenkov/timer)
+[![PHP Version Require](http://poser.pugx.org/manchenkov/timer/require/php)](https://packagist.org/packages/manchenkov/timer)
 
 **Timer** is a class to help build time interval value in seconds by object-oriented style
 
